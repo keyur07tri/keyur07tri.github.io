@@ -36,16 +36,16 @@
   .wrap{max-width:1160px; margin:0 auto; padding:0 24px;}
   .mono{font-family:'JetBrains Mono', monospace;}
 
-  /* Ambient mesh background */
+  /* Ambient mesh background — attached to page flow, not viewport, so it never repaints on scroll */
   .mesh{
-    position:fixed; inset:0; z-index:0; pointer-events:none;
+    position:absolute; inset:0; z-index:0; pointer-events:none;
     background:
       radial-gradient(ellipse 700px 500px at 15% -5%, rgba(122,31,43,0.28), transparent 60%),
       radial-gradient(ellipse 600px 500px at 90% 15%, rgba(203,163,92,0.14), transparent 60%),
       radial-gradient(ellipse 800px 600px at 50% 100%, rgba(203,163,92,0.08), transparent 60%);
   }
   .grain{
-    position:fixed; inset:0; z-index:1; pointer-events:none; opacity:0.05; mix-blend-mode:overlay;
+    position:absolute; inset:0; z-index:1; pointer-events:none; opacity:0.04;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
   .cursor-glow{
@@ -58,11 +58,24 @@
 
   main, header, footer{position:relative; z-index:2;}
 
+  /* Loading polish — staggered fade-in once page/fonts are ready */
+  header{opacity:0; transform:translateY(-8px); transition:opacity 0.6s ease, transform 0.6s ease;}
+  body.ready header{opacity:1; transform:translateY(0);}
+  .load-stagger{
+    opacity:0; transform:translateY(16px);
+    transition:opacity 0.7s cubic-bezier(.16,.84,.44,1), transform 0.7s cubic-bezier(.16,.84,.44,1);
+  }
+  body.ready .load-stagger{opacity:1; transform:translateY(0);}
+  .ld-1{transition-delay:.05s;}
+  .ld-2{transition-delay:.16s;}
+  .ld-3{transition-delay:.27s;}
+  .ld-4{transition-delay:.38s;}
+  .ld-5{transition-delay:.49s;}
+
   /* Header */
   header{
     position:sticky; top:0; z-index:10;
-    background:rgba(8,8,10,0.75);
-    backdrop-filter:blur(14px);
+    background:rgba(8,8,10,0.96);
     border-bottom:1px solid var(--line);
   }
   .topbar{
@@ -97,7 +110,7 @@
   .ticker-track{
     display:inline-block;
     animation:scroll-left 26s linear infinite;
-    font-size:11.5px; letter-spacing:0.12em; color:var(--gold-dim);
+    font-size:11.5px; letter-spacing:0.12em; color:var(--ivory); font-weight:600;
     font-family:'JetBrains Mono', monospace;
   }
   .ticker-track span{margin:0 28px;}
@@ -126,20 +139,113 @@
     margin-top:20px; color:var(--muted); font-size:16px;
     max-width:480px; margin-left:auto; margin-right:auto;
   }
-  .search-box{
-    max-width:480px; margin:36px auto 0;
-    display:flex; align-items:center; gap:10px;
-    border:1px solid var(--line); border-radius:30px;
-    padding:14px 22px;
-    background:rgba(255,255,255,0.02);
-    transition:border-color 0.3s, box-shadow 0.3s;
+  .cta-btn{
+    display:inline-block; margin-top:34px;
+    padding:15px 38px;
+    background:var(--gold); color:var(--black);
+    font-size:13px; font-weight:600; letter-spacing:0.1em;
+    border-radius:30px;
+    border:1px solid var(--gold);
+    transition:background 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
   }
-  .search-box:focus-within{border-color:var(--gold); box-shadow:0 0 0 4px rgba(203,163,92,0.08);}
-  .search-box input{
-    background:none; border:none; outline:none; color:var(--ivory);
-    font-family:'Inter'; font-size:14.5px; width:100%;
+  .cta-btn:hover{
+    background:transparent; color:var(--gold);
+    transform:translateY(-2px);
+    box-shadow:0 12px 30px -10px rgba(203,163,92,0.4);
   }
-  .search-box input::placeholder{color:var(--muted);}
+
+  /* Eyebrow — small caps label used across sections for editorial hierarchy */
+  .eyebrow{
+    display:inline-block; font-family:'JetBrains Mono', monospace;
+    font-size:10px; letter-spacing:0.22em; text-transform:uppercase;
+    color:var(--gold-dim); font-weight:600;
+  }
+
+  /* Hero — two-column layout: copy + featured photo */
+  .hero-grid{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:60px;
+    align-items:center; text-align:left;
+  }
+  .hero-copy h1{margin:0 0 0; max-width:520px;}
+  .hero-copy p{max-width:440px; margin:20px 0 0; margin-left:0;}
+  .hero-actions{margin-top:32px;}
+
+  .trust-bar{display:flex; flex-wrap:wrap; gap:10px 20px; margin-top:26px;}
+  .trust-item{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:11px; letter-spacing:0.03em; color:var(--muted);
+    font-family:'JetBrains Mono', monospace;
+  }
+  .trust-item svg{color:var(--gold); flex-shrink:0;}
+
+  .hero-photo-frame{
+    position:relative; aspect-ratio:4/5; border-radius:14px; overflow:hidden;
+    background:linear-gradient(160deg, #201B17 0%, #0D0C0E 100%);
+    border:1px solid var(--line);
+    box-shadow:0 34px 64px -26px rgba(0,0,0,0.6);
+  }
+  .hero-photo{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; display:none;}
+  .hero-photo-frame.has-photo .hero-photo{display:block;}
+  .hero-photo-frame.has-photo .photo-placeholder{display:none;}
+  .photo-placeholder{
+    position:absolute; inset:0; z-index:0;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;
+    color:var(--muted); font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase;
+  }
+  .photo-placeholder svg{opacity:0.45;}
+  .hero-photo-frame::after{
+    content:''; position:absolute; inset:0; z-index:1;
+    background:linear-gradient(180deg, transparent 38%, rgba(0,0,0,0.86) 100%);
+  }
+  .hero-photo-corner{
+    position:absolute; top:14px; right:14px; z-index:2;
+    width:34px; height:34px;
+    border-top:1px solid var(--gold-dim); border-right:1px solid var(--gold-dim);
+  }
+  .hero-photo-overlay{position:absolute; left:0; right:0; bottom:0; z-index:2; padding:22px;}
+  .hero-photo-name{display:block; font-family:'Bodoni Moda', serif; font-style:italic; font-size:18px; margin-top:5px;}
+
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr; text-align:center;}
+    .hero-copy h1, .hero-copy p{margin-left:auto; margin-right:auto;}
+    .hero-visual{margin-top:40px;}
+    .trust-bar{justify-content:center;}
+    .hero-actions{display:flex; justify-content:center;}
+  }
+
+  /* Trust strip */
+  .trust-strip{
+    display:grid; grid-template-columns:repeat(4,1fr);
+    border:1px solid var(--line); border-radius:8px; overflow:hidden;
+    background:var(--panel); margin-top:44px;
+  }
+  .trust-strip-item{
+    display:flex; align-items:center; gap:12px; padding:18px 18px;
+    border-right:1px solid var(--line);
+  }
+  .trust-strip-item:last-child{border-right:none;}
+  .trust-strip-item svg{color:var(--gold); flex-shrink:0;}
+  .ts-title{font-size:12px; font-weight:600; letter-spacing:0.02em;}
+  .ts-sub{font-size:10.5px; color:var(--muted); margin-top:3px; line-height:1.4;}
+  @media(max-width:760px){
+    .trust-strip{grid-template-columns:1fr 1fr;}
+    .trust-strip-item{border-bottom:1px solid var(--line);}
+  }
+  @media(max-width:460px){
+    .trust-strip{grid-template-columns:1fr;}
+  }
+
+  /* Editorial statement blocks */
+  .editorial-block{
+    text-align:center; max-width:620px; margin:0 auto 48px;
+  }
+  .editorial-block h2{
+    font-size:26px; font-weight:600; font-style:italic; margin-bottom:14px;
+  }
+  .editorial-block p{
+    color:var(--muted); font-size:15px; line-height:1.7;
+  }
+  .editorial-block.below{margin:56px auto 0;}
 
   /* Reveal on scroll */
   .reveal{opacity:0; transform:translateY(26px); transition:opacity 0.8s ease, transform 0.8s ease;}
@@ -190,14 +296,22 @@
     will-change:transform;
   }
   .tile:hover{border-color:var(--gold-dim); box-shadow:0 20px 40px -18px rgba(0,0,0,0.6);}
+  .tile-photo{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;}
+  .tile-placeholder{
+    position:absolute; inset:0; z-index:0;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
+    color:var(--muted); font-size:10px; letter-spacing:0.1em; text-transform:uppercase;
+  }
+  .tile-placeholder svg{opacity:0.4;}
   .tile::before{
-    content:''; position:absolute; inset:0;
+    content:''; position:absolute; inset:0; z-index:1;
     background:linear-gradient(180deg, transparent 35%, rgba(0,0,0,0.88) 100%);
   }
   .tile-label{
     position:relative; z-index:2; padding:16px;
-    display:flex; justify-content:space-between; align-items:center; width:100%;
+    display:flex; justify-content:space-between; align-items:flex-end; width:100%;
   }
+  .tile-name{font-family:'Bodoni Moda', serif; font-style:italic; font-size:15px; margin-top:3px; color:var(--ivory);}
   .tile-label .cta{
     font-size:12px; letter-spacing:0.08em; color:var(--gold);
     display:flex; align-items:center; gap:6px;
@@ -258,11 +372,6 @@
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
-    <div class="header-right">
-      <div class="icon-btn" title="Search">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      </div>
-    </div>
   </div>
   <div class="ticker">
     <div class="ticker-track" id="tickerTrack"></div>
@@ -272,12 +381,55 @@
 <main class="wrap">
 
   <section class="hero reveal">
-    <div class="kicker">LIVE · UPDATED WEEKLY</div>
-    <h1>Every face you recognize has a story nobody's told yet.</h1>
-    <p>Age, career, family, and net worth of the personalities the world is searching for right now.</p>
-    <div class="search-box">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8A8478" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input type="text" placeholder="Search any famous face…">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="kicker load-stagger ld-1">LIVE · UPDATED WEEKLY</div>
+        <h1 class="load-stagger ld-2">Every face you recognize has a story nobody's told yet.</h1>
+        <p class="load-stagger ld-3">The internet's growing archive of biography, age, career, and net worth — for every face the world can't stop talking about.</p>
+        <div class="hero-actions load-stagger ld-4">
+          <a href="biography.html" class="cta-btn">Explore Biography</a>
+        </div>
+        <div class="trust-bar load-stagger ld-5">
+          <span class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Public Records</span>
+          <span class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Verified Interviews</span>
+          <span class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Fact-Checked Weekly</span>
+        </div>
+      </div>
+      <div class="hero-visual load-stagger ld-3">
+        <div class="hero-photo-frame" id="heroPhotoFrame">
+          <img class="hero-photo" id="heroPhotoImg" alt="Featured profile" loading="eager" decoding="async">
+          <div class="photo-placeholder">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-7 8-7s8 3 8 7"/></svg>
+            <span>Photo — paste URL in config</span>
+          </div>
+          <div class="hero-photo-corner"></div>
+          <div class="hero-photo-overlay">
+            <span class="eyebrow">Featured This Week</span>
+            <span class="hero-photo-name">— add name —</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="trust-strip">
+      <div class="trust-strip-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
+        <div><div class="ts-title">Multi-Source Verified</div><div class="ts-sub">Checked against 2+ independent sources</div></div>
+      </div>
+      <div class="trust-strip-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        <div><div class="ts-title">Updated Weekly</div><div class="ts-sub">Every profile reviewed on a schedule</div></div>
+      </div>
+      <div class="trust-strip-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        <div><div class="ts-title">Public Records & Statements</div><div class="ts-sub">No anonymous tips, no rumor mills</div></div>
+      </div>
+      <div class="trust-strip-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20l-7-4V6l7-4 7 4v10l-7 4z"/><path d="M9 11l2 2 4-4"/></svg>
+        <div><div class="ts-title">Editorially Reviewed</div><div class="ts-sub">Written and checked before it's published</div></div>
+      </div>
     </div>
   </section>
 
@@ -295,11 +447,25 @@
   </section>
 
   <section class="reveal">
+    <div class="editorial-block">
+      <h2>Not just a name. A record worth trusting.</h2>
+      <p>Every profile here is built the way a serious publication builds a story — checked against multiple sources, written in plain language, and free of the noise that fills most celebrity pages online.</p>
+    </div>
+
     <div class="section-head">
       <h2>Trending Faces</h2>
       <span>6 PROFILES</span>
     </div>
     <div class="tiles" id="tileGrid"></div>
+
+    <div style="text-align:center; margin-top:40px;">
+      <a href="biography.html" class="cta-btn">Explore Biography</a>
+    </div>
+
+    <div class="editorial-block below">
+      <h2>Built to be the reference, not another rumor.</h2>
+      <p>No clickbait, no recycled gossip — just the facts people actually come here to find. This is the archive we'd want to read ourselves, growing one face at a time.</p>
+    </div>
   </section>
 
   <div class="stats reveal">
@@ -331,6 +497,23 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  // ====================================================================
+  // IMAGE CONFIG — paste Pinterest / Dropbox (direct) image URLs here.
+  // Leave "" empty and that spot shows a neat placeholder instead of
+  // a broken image icon. Nothing else needs to change when you add URLs.
+  // ====================================================================
+  const HERO_PHOTO = ""; // featured profile photo (portrait, 4:5 works best)
+  const TILE_PHOTOS = ["", "", "", "", "", ""]; // 6 trending-face tile photos, same order as tiles below
+
+  // Hero photo loader
+  (function loadHeroPhoto(){
+    if (!HERO_PHOTO) return;
+    const frame = document.getElementById('heroPhotoFrame');
+    const img = document.getElementById('heroPhotoImg');
+    img.addEventListener('load', () => frame.classList.add('has-photo'));
+    img.src = HERO_PHOTO;
+  })();
+
   // Ticker content
   const tickerItems = ['MOST SEARCHED THIS WEEK', 'NEW PROFILES ADDED EVERY WEEK', 'INDEPENDENTLY RESEARCHED', 'AGE · CAREER · NET WORTH', 'ONE PLACE FOR EVERY FACE'];
   const track = document.getElementById('tickerTrack');
@@ -356,10 +539,18 @@
   // Tile grid — all point to the single biography category page
   const tileCount = 6;
   const grid = document.getElementById('tileGrid');
-  grid.innerHTML = Array.from({length: tileCount}).map(() => `
+  const placeholderSvg = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-7 8-7s8 3 8 7"/></svg>`;
+  grid.innerHTML = Array.from({length: tileCount}).map((_, i) => `
     <a class="tile" href="biography.html">
+      ${TILE_PHOTOS[i]
+        ? `<img class="tile-photo" src="${TILE_PHOTOS[i]}" alt="" loading="lazy" decoding="async">`
+        : `<div class="tile-placeholder">${placeholderSvg}<span>Add photo</span></div>`}
       <div class="tile-label">
-        <span class="cta">Read Biography <span class="arrow">→</span></span>
+        <div>
+          <span class="eyebrow">Trending</span>
+          <div class="tile-name">— add name —</div>
+        </div>
+        <span class="cta">Read <span class="arrow">→</span></span>
       </div>
     </a>
   `).join('');
@@ -385,6 +576,13 @@
     });
     document.addEventListener('mouseleave', () => { glow.style.opacity = '0'; });
   }
+
+  // Loading polish — staggered fade-in once fonts/layout settle
+  window.addEventListener('load', () => {
+    requestAnimationFrame(() => document.body.classList.add('ready'));
+  });
+  // Fallback in case 'load' is delayed by slow external assets
+  setTimeout(() => document.body.classList.add('ready'), 1200);
 
   // Scroll reveal
   const io = new IntersectionObserver((entries) => {
