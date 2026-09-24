@@ -1,0 +1,8 @@
+/* TEAM */
+Site: Biography and Net Worth
+Site: https://biographyandnetworth.in
+
+/* SITE */
+Last update: 2026/09/24
+Language: English
+Doctype: HTML5
