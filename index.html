@@ -2,594 +2,285 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Biography & Net Worth — Famous Faces, Untold Stories</title>
-<meta name="description" content="Biography, age, career and net worth of the personalities the world is searching for.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Biography &amp; Networth — Real Stories, Real Numbers</title>
+<meta name="description" content="In-depth biographies and net worth profiles of actors, athletes, musicians, entrepreneurs and creators — researched, verified and kept up to date.">
+<link rel="icon" type="image/png" href="https://res.cloudinary.com/seuwtfrp/image/upload/v1790229632/biography_and_net_worth.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;0,700;1,500;1,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --black:#08080A;
-    --panel:#121014;
-    --panel2:#18151A;
-    --gold:#CBA35C;
-    --gold-dim:#8A7342;
-    --wine:#7A1F2B;
-    --wine-glow:rgba(122,31,43,0.35);
-    --ivory:#EFE9DD;
-    --muted:#8A8478;
-    --line:#242019;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--black);
-    color:var(--ivory);
-    font-family:'Inter', sans-serif;
-    line-height:1.55;
-    position:relative;
-    overflow-x:hidden;
-  }
-  h1,h2,.brand{font-family:'Bodoni Moda', serif;}
-  a{color:inherit; text-decoration:none;}
-  .wrap{max-width:1160px; margin:0 auto; padding:0 24px;}
-  .mono{font-family:'JetBrains Mono', monospace;}
+:root{
+  --ink:#1c150f;--paper:#f7f1e6;--card:#fffdf9;--gold:#a97a2c;--wine:#6f2230;
+  --muted:#77695a;--line:#e6dcc9;--display:'Fraunces',serif;--sans:'Inter',system-ui,sans-serif;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.65;overflow-x:hidden}
+h1,h2,h3{font-family:var(--display);margin:0;font-weight:500;letter-spacing:-.01em}
+p{margin:0}
+img{max-width:100%;display:block}
+.wrap{width:min(1180px,calc(100% - 48px));margin:auto}
+a{color:inherit}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:15px 30px;border-radius:2px;font-weight:600;font-size:.92rem;text-decoration:none;cursor:pointer;border:1.5px solid transparent;transition:transform .3s ease,background .3s ease}
+.btn.solid{background:var(--wine);color:#fff}
+.btn.solid:hover{background:#591a25;transform:translateY(-2px)}
+.btn.ghost{border-color:currentColor}
+.btn.ghost:hover{transform:translateY(-2px)}
+.label{color:var(--gold);font-weight:600;font-size:.88rem}
 
-  /* Ambient mesh background — attached to page flow, not viewport, so it never repaints on scroll */
-  .mesh{
-    position:absolute; inset:0; z-index:0; pointer-events:none;
-    background:
-      radial-gradient(ellipse 700px 500px at 15% -5%, rgba(122,31,43,0.28), transparent 60%),
-      radial-gradient(ellipse 600px 500px at 90% 15%, rgba(203,163,92,0.14), transparent 60%),
-      radial-gradient(ellipse 800px 600px at 50% 100%, rgba(203,163,92,0.08), transparent 60%);
-  }
-  .grain{
-    position:absolute; inset:0; z-index:1; pointer-events:none; opacity:0.04;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-  .cursor-glow{
-    position:fixed; width:460px; height:460px; border-radius:50%; z-index:0; pointer-events:none;
-    background:radial-gradient(circle, rgba(203,163,92,0.07) 0%, transparent 70%);
-    transform:translate(-50%,-50%);
-    transition:opacity 0.3s;
-    opacity:0;
-  }
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:26px 0;transition:.35s ease;padding-top:calc(26px + env(safe-area-inset-top,0px))}
+nav.scrolled{padding:14px 0;padding-top:calc(14px + env(safe-area-inset-top,0px));background:rgba(28,21,15,.92);backdrop-filter:blur(10px)}
+.nav-inner{display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:var(--display);font-size:1.5rem;color:#fff;letter-spacing:0;display:flex;align-items:center}
+.logo em{font-style:normal;color:var(--gold)}
+.logo img{height:42px;width:auto;display:block}
+footer .logo img{height:56px}
+.nav-links{display:flex;gap:34px;font-weight:500;font-size:.94rem;color:#f2ede2}
+.nav-links a{text-decoration:none;opacity:.85}
+.nav-links a:hover{opacity:1;color:var(--gold)}
+@media(max-width:800px){.nav-links{display:none}}
 
-  main, header, footer{position:relative; z-index:2;}
+/* HERO */
+.hero{position:relative;min-height:100svh;background:var(--ink);color:#fff;display:flex;align-items:flex-end}
+.hero-media{position:absolute;inset:0;overflow:hidden;background:var(--ink)}
+.hero-media img{width:100%;height:100%;object-fit:contain;object-position:center}
+.hero-media::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(15,11,7,.92) 10%,rgba(15,11,7,.35) 55%,rgba(15,11,7,.1) 100%)}
+.hero-inner{position:relative;z-index:2;padding:0 0 80px;padding-top:calc(140px + env(safe-area-inset-top,0px))}
+.hero h1{font-size:clamp(2.4rem,5.6vw,4.2rem);line-height:1.05;max-width:780px}
+.hero p{margin-top:22px;max-width:520px;color:#e6ded0;font-size:1.05rem}
+.hero-cta{display:flex;gap:16px;margin-top:34px;flex-wrap:wrap}
+.hero-cta .btn.ghost{color:#fff}
 
-  /* Loading polish — staggered fade-in once page/fonts are ready */
-  header{opacity:0; transform:translateY(-8px); transition:opacity 0.6s ease, transform 0.6s ease;}
-  body.ready header{opacity:1; transform:translateY(0);}
-  .load-stagger{
-    opacity:0; transform:translateY(16px);
-    transition:opacity 0.7s cubic-bezier(.16,.84,.44,1), transform 0.7s cubic-bezier(.16,.84,.44,1);
-  }
-  body.ready .load-stagger{opacity:1; transform:translateY(0);}
-  .ld-1{transition-delay:.05s;}
-  .ld-2{transition-delay:.16s;}
-  .ld-3{transition-delay:.27s;}
-  .ld-4{transition-delay:.38s;}
-  .ld-5{transition-delay:.49s;}
+/* INTRO STRAP */
+.strap{padding:72px 0}
+.strap p{font-family:var(--display);font-style:italic;font-size:clamp(1.2rem,2.4vw,1.6rem);max-width:760px;margin:auto;text-align:center;color:#39291d;line-height:1.5}
 
-  /* Header */
-  header{
-    position:sticky; top:0; z-index:10;
-    background:rgba(8,8,10,0.96);
-    border-bottom:1px solid var(--line);
-  }
-  .topbar{
-    display:flex; justify-content:space-between; align-items:center;
-    padding:20px 0;
-  }
-  .brand{font-size:21px; font-weight:700;}
-  .brand em{color:var(--gold); font-style:normal;}
-  nav.primary{display:flex; gap:36px; font-size:13px; letter-spacing:0.06em; font-weight:500;}
-  nav.primary a{position:relative; padding-bottom:4px; color:var(--muted); transition:color 0.25s;}
-  nav.primary a:hover, nav.primary a.active{color:var(--ivory);}
-  nav.primary a::after{
-    content:''; position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--gold);
-    transition:width 0.3s;
-  }
-  nav.primary a:hover::after{width:100%;}
-  .header-right{display:flex; align-items:center; gap:22px;}
-  .icon-btn{
-    width:36px; height:36px; border:1px solid var(--line); border-radius:50%;
-    display:flex; align-items:center; justify-content:center; cursor:pointer;
-    transition:border-color 0.25s;
-  }
-  .icon-btn:hover{border-color:var(--gold);}
+/* BANNER (landscape divider) */
+.banner{position:relative;overflow:hidden;background:var(--ink);line-height:0}
+.banner img{width:100%;height:auto;display:block}
+.banner::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,11,7,.55),rgba(15,11,7,.05) 60%)}
+.banner span{position:absolute;left:0;right:0;bottom:0;padding:26px 24px;z-index:2;color:#fff;font-family:var(--display);font-style:italic;font-size:clamp(1rem,2vw,1.35rem)}
 
-  /* Ticker */
-  .ticker{
-    border-bottom:1px solid var(--line);
-    overflow:hidden; white-space:nowrap;
-    padding:9px 0;
-    background:var(--panel);
-  }
-  .ticker-track{
-    display:inline-block;
-    animation:scroll-left 26s linear infinite;
-    font-size:11.5px; letter-spacing:0.12em; color:var(--ivory); font-weight:600;
-    font-family:'JetBrains Mono', monospace;
-  }
-  .ticker-track span{margin:0 28px;}
-  @keyframes scroll-left{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+/* SECTION shared */
+.section{padding:100px 0}
+.section h2{font-size:clamp(1.9rem,3.6vw,2.7rem);margin-top:10px;max-width:640px}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.visible{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.hero-media img{transition:none}}
 
-  /* Hero */
-  .hero{
-    padding:100px 0 70px;
-    text-align:center;
-    border-bottom:1px solid var(--line);
-  }
-  .kicker{
-    display:inline-flex; align-items:center; gap:8px;
-    color:var(--wine); font-size:11px; letter-spacing:0.25em; font-weight:600;
-    margin-bottom:26px;
-    border:1px solid rgba(122,31,43,0.4); padding:6px 14px; border-radius:20px;
-  }
-  .kicker::before{content:''; width:6px; height:6px; border-radius:50%; background:var(--wine); box-shadow:0 0 8px var(--wine);}
-  .hero h1{
-    font-size:clamp(36px, 6.4vw, 64px);
-    font-weight:700; font-style:italic;
-    line-height:1.06;
-    max-width:840px; margin:0 auto;
-  }
-  .hero p{
-    margin-top:20px; color:var(--muted); font-size:16px;
-    max-width:480px; margin-left:auto; margin-right:auto;
-  }
-  .cta-btn{
-    display:inline-block; margin-top:34px;
-    padding:15px 38px;
-    background:var(--gold); color:var(--black);
-    font-size:13px; font-weight:600; letter-spacing:0.1em;
-    border-radius:30px;
-    border:1px solid var(--gold);
-    transition:background 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
-  }
-  .cta-btn:hover{
-    background:transparent; color:var(--gold);
-    transform:translateY(-2px);
-    box-shadow:0 12px 30px -10px rgba(203,163,92,0.4);
-  }
+/* PROFILE GRID (1:1 pairs) */
+.profile-grid{margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.profile-card{position:relative;border-radius:2px;overflow:hidden;background:var(--ink);aspect-ratio:1/1}
+.profile-card img{width:100%;height:100%;object-fit:contain;object-position:center}
+@media(max-width:640px){.profile-grid{grid-template-columns:1fr}}
 
-  /* Eyebrow — small caps label used across sections for editorial hierarchy */
-  .eyebrow{
-    display:inline-block; font-family:'JetBrains Mono', monospace;
-    font-size:10px; letter-spacing:0.22em; text-transform:uppercase;
-    color:var(--gold-dim); font-weight:600;
-  }
+/* MID CTA BAND */
+.mid-cta{background:var(--ink);color:#fff;padding:80px 0;text-align:center}
+.mid-cta h2{color:#fff;max-width:600px;margin:0 auto}
+.mid-cta p{color:#cfc4b3;margin-top:16px;max-width:480px;margin-left:auto;margin-right:auto}
+.mid-cta .btn{margin-top:30px}
 
-  /* Hero — two-column layout: copy + featured photo */
-  .hero-grid{
-    display:grid; grid-template-columns:1.05fr 0.95fr; gap:60px;
-    align-items:center; text-align:left;
-  }
-  .hero-copy h1{margin:0 0 0; max-width:520px;}
-  .hero-copy p{max-width:440px; margin:20px 0 0; margin-left:0;}
-  .hero-actions{margin-top:32px;}
+/* TRENDING GRID (insta pairs, portrait) */
+.trend-grid{margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.trend-card{position:relative;border-radius:2px;overflow:hidden;background:var(--ink);aspect-ratio:4/5}
+.trend-card img{width:100%;height:100%;object-fit:contain;object-position:center}
+@media(max-width:640px){.trend-grid{grid-template-columns:1fr}}
 
-  .trust-bar{display:flex; flex-wrap:wrap; gap:10px 20px; margin-top:26px;}
-  .trust-item{
-    display:inline-flex; align-items:center; gap:6px;
-    font-size:11px; letter-spacing:0.03em; color:var(--muted);
-    font-family:'JetBrains Mono', monospace;
-  }
-  .trust-item svg{color:var(--gold); flex-shrink:0;}
+/* STATS BAND */
+.stats-band{background:var(--wine);color:#fff;padding:64px 0}
+.stats-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.stat-num{font-family:var(--display);font-size:clamp(2.1rem,4.4vw,3rem)}
+.stat-label{font-size:.86rem;font-weight:500;opacity:.9;margin-top:4px}
+@media(max-width:700px){.stats-inner{grid-template-columns:1fr 1fr;gap:36px}}
 
-  .hero-photo-frame{
-    position:relative; aspect-ratio:4/5; border-radius:14px; overflow:hidden;
-    background:linear-gradient(160deg, #201B17 0%, #0D0C0E 100%);
-    border:1px solid var(--line);
-    box-shadow:0 34px 64px -26px rgba(0,0,0,0.6);
-  }
-  .hero-photo{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; display:none;}
-  .hero-photo-frame.has-photo .hero-photo{display:block;}
-  .hero-photo-frame.has-photo .photo-placeholder{display:none;}
-  .photo-placeholder{
-    position:absolute; inset:0; z-index:0;
-    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;
-    color:var(--muted); font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase;
-  }
-  .photo-placeholder svg{opacity:0.45;}
-  .hero-photo-frame::after{
-    content:''; position:absolute; inset:0; z-index:1;
-    background:linear-gradient(180deg, transparent 38%, rgba(0,0,0,0.86) 100%);
-  }
-  .hero-photo-corner{
-    position:absolute; top:14px; right:14px; z-index:2;
-    width:34px; height:34px;
-    border-top:1px solid var(--gold-dim); border-right:1px solid var(--gold-dim);
-  }
-  .hero-photo-overlay{position:absolute; left:0; right:0; bottom:0; z-index:2; padding:22px;}
-  .hero-photo-name{display:block; font-family:'Bodoni Moda', serif; font-style:italic; font-size:18px; margin-top:5px;}
+/* WHY READ split */
+.why{padding:0 0 100px}
+.why-top{overflow:hidden;position:relative;background:var(--ink);line-height:0}
+.why-top img{width:100%;height:auto;display:block}
+.why-body{margin-top:56px;display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:start}
+.mode-list{display:flex;flex-direction:column}
+.mode{padding:26px 0;border-bottom:1px solid var(--line);display:flex;gap:20px}
+.mode:first-child{border-top:1px solid var(--line)}
+.mode svg{width:28px;height:28px;stroke:var(--wine);flex-shrink:0;margin-top:2px}
+.mode h3{font-family:var(--sans);font-weight:700;font-size:1.05rem}
+.mode p{color:var(--muted);font-size:.92rem;margin-top:6px}
+@media(max-width:850px){.why-body{grid-template-columns:1fr}}
 
-  @media(max-width:900px){
-    .hero-grid{grid-template-columns:1fr; text-align:center;}
-    .hero-copy h1, .hero-copy p{margin-left:auto; margin-right:auto;}
-    .hero-visual{margin-top:40px;}
-    .trust-bar{justify-content:center;}
-    .hero-actions{display:flex; justify-content:center;}
-  }
+/* FINAL CTA */
+.final-cta{padding:110px 0;text-align:center;background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.final-cta h2{max-width:640px;margin:0 auto}
+.final-cta .btn{margin-top:30px}
 
-  /* Trust strip */
-  .trust-strip{
-    display:grid; grid-template-columns:repeat(4,1fr);
-    border:1px solid var(--line); border-radius:8px; overflow:hidden;
-    background:var(--panel); margin-top:44px;
-  }
-  .trust-strip-item{
-    display:flex; align-items:center; gap:12px; padding:18px 18px;
-    border-right:1px solid var(--line);
-  }
-  .trust-strip-item:last-child{border-right:none;}
-  .trust-strip-item svg{color:var(--gold); flex-shrink:0;}
-  .ts-title{font-size:12px; font-weight:600; letter-spacing:0.02em;}
-  .ts-sub{font-size:10.5px; color:var(--muted); margin-top:3px; line-height:1.4;}
-  @media(max-width:760px){
-    .trust-strip{grid-template-columns:1fr 1fr;}
-    .trust-strip-item{border-bottom:1px solid var(--line);}
-  }
-  @media(max-width:460px){
-    .trust-strip{grid-template-columns:1fr;}
-  }
-
-  /* Editorial statement blocks */
-  .editorial-block{
-    text-align:center; max-width:620px; margin:0 auto 48px;
-  }
-  .editorial-block h2{
-    font-size:26px; font-weight:600; font-style:italic; margin-bottom:14px;
-  }
-  .editorial-block p{
-    color:var(--muted); font-size:15px; line-height:1.7;
-  }
-  .editorial-block.below{margin:56px auto 0;}
-
-  /* Reveal on scroll */
-  .reveal{opacity:0; transform:translateY(26px); transition:opacity 0.8s ease, transform 0.8s ease;}
-  .reveal.in{opacity:1; transform:translateY(0);}
-
-  /* Section heading */
-  .section-head{
-    display:flex; justify-content:space-between; align-items:baseline;
-    margin:70px 0 26px;
-  }
-  .section-head h2{font-size:25px; font-weight:600; font-style:italic;}
-  .section-head span{font-size:11px; color:var(--muted); letter-spacing:0.15em; font-family:'JetBrains Mono', monospace;}
-
-  /* Data table */
-  .data-table{
-    width:100%; border-collapse:collapse;
-    font-size:13.5px;
-  }
-  .data-table th{
-    text-align:left; padding:12px 14px;
-    color:var(--muted); font-weight:500; font-size:11px; letter-spacing:0.1em;
-    border-bottom:1px solid var(--line);
-    font-family:'JetBrains Mono', monospace;
-  }
-  .data-table td{
-    padding:16px 14px;
-    border-bottom:1px solid var(--line);
-  }
-  .data-table tr{transition:background 0.25s;}
-  .data-table tbody tr:hover{background:rgba(203,163,92,0.04);}
-  .rank{font-family:'JetBrains Mono', monospace; color:var(--gold); font-weight:500;}
-  .trend-up{color:#8FB88A; font-family:'JetBrains Mono', monospace; font-size:12px;}
-  .field-tag{
-    display:inline-block; font-size:10.5px; letter-spacing:0.06em; color:var(--muted);
-    border:1px solid var(--line); padding:3px 9px; border-radius:20px;
-  }
-  .row-name{font-weight:600; font-style:italic; font-family:'Bodoni Moda', serif; font-size:15px;}
-
-  /* Tilt tiles */
-  .tiles{display:grid; grid-template-columns:repeat(3, 1fr); gap:22px;}
-  .tile{
-    position:relative; aspect-ratio:16/9; border-radius:8px; overflow:hidden;
-    background:linear-gradient(160deg, #201B17 0%, #0D0C0E 100%);
-    border:1px solid var(--line);
-    display:flex; align-items:flex-end;
-    transform-style:preserve-3d;
-    transition:border-color 0.3s, box-shadow 0.3s;
-    will-change:transform;
-  }
-  .tile:hover{border-color:var(--gold-dim); box-shadow:0 20px 40px -18px rgba(0,0,0,0.6);}
-  .tile-photo{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;}
-  .tile-placeholder{
-    position:absolute; inset:0; z-index:0;
-    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
-    color:var(--muted); font-size:10px; letter-spacing:0.1em; text-transform:uppercase;
-  }
-  .tile-placeholder svg{opacity:0.4;}
-  .tile::before{
-    content:''; position:absolute; inset:0; z-index:1;
-    background:linear-gradient(180deg, transparent 35%, rgba(0,0,0,0.88) 100%);
-  }
-  .tile-label{
-    position:relative; z-index:2; padding:16px;
-    display:flex; justify-content:space-between; align-items:flex-end; width:100%;
-  }
-  .tile-name{font-family:'Bodoni Moda', serif; font-style:italic; font-size:15px; margin-top:3px; color:var(--ivory);}
-  .tile-label .cta{
-    font-size:12px; letter-spacing:0.08em; color:var(--gold);
-    display:flex; align-items:center; gap:6px;
-  }
-  .tile-label .arrow{transition:transform 0.3s;}
-  .tile:hover .arrow{transform:translateX(4px);}
-
-  /* Stats strip */
-  .stats{
-    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
-    background:var(--line); border:1px solid var(--line); border-radius:8px; overflow:hidden;
-    margin-top:70px;
-  }
-  .stat{background:var(--panel); padding:28px 22px;}
-  .stat .num{font-family:'Bodoni Moda', serif; font-size:32px; font-style:italic; color:var(--gold);}
-  .stat .label{font-size:11.5px; color:var(--muted); letter-spacing:0.08em; margin-top:6px;}
-
-  footer{
-    margin-top:90px; padding:46px 0 40px;
-    border-top:1px solid var(--line);
-  }
-  .footer-top{
-    display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px;
-    padding-bottom:28px; border-bottom:1px solid var(--line); margin-bottom:20px;
-  }
-  .footer-nav{display:flex; gap:26px; font-size:13px; color:var(--muted);}
-  .footer-nav a:hover{color:var(--gold);}
-  .footer-bottom{
-    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
-    font-size:12px; color:var(--muted);
-  }
-
-  @media(max-width:760px){
-    nav.primary{display:none;}
-    .tiles{grid-template-columns:1fr 1fr;}
-    .stats{grid-template-columns:1fr;}
-    .hero{padding:70px 0 50px;}
-    .data-table{font-size:12px;}
-    .data-table th:nth-child(3), .data-table td:nth-child(3){display:none;}
-  }
-  @media(max-width:460px){
-    .tiles{grid-template-columns:1fr;}
-  }
+/* FOOTER */
+footer{background:var(--ink);color:#e9e2d3;padding:64px 0 30px}
+.foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,.14)}
+.foot-links{display:flex;gap:38px;flex-wrap:wrap}
+.foot-links a{text-decoration:none;color:#c9bfad;font-size:.9rem}
+.foot-links a:hover{color:var(--gold)}
+.foot-bottom{padding-top:22px;font-size:.8rem;color:#8f8676;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 </style>
 </head>
 <body>
 
-<div class="mesh"></div>
-<div class="grain"></div>
-<div class="cursor-glow" id="cursorGlow"></div>
-
-<header>
-  <div class="wrap topbar">
-    <div class="brand">Biography <em>&</em> NetWorth</div>
-    <nav class="primary">
-      <a href="index.html" class="active">Home</a>
-      <a href="biography.html">Biography</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+<nav id="nav"><div class="wrap nav-inner">
+  <a class="logo" href="index.html" target="_blank" rel="noopener"><img src="https://res.cloudinary.com/seuwtfrp/image/upload/v1790229632/biography_and_net_worth.png" alt="Biography &amp; Networth"></a>
+  <div class="nav-links">
+    <a href="index.html" target="_blank" rel="noopener">Home</a>
+    <a href="biography.html" target="_blank" rel="noopener">Biography</a>
+    <a href="about.html" target="_blank" rel="noopener">About</a>
+    <a href="contact.html" target="_blank" rel="noopener">Contact</a>
   </div>
-  <div class="ticker">
-    <div class="ticker-track" id="tickerTrack"></div>
+
+</div></nav>
+
+<header class="hero">
+  <div class="hero-media">
+    <img src="https://res.cloudinary.com/seuwtfrp/image/upload/v1790325428/biographyandnetworth_11.png" alt="Featured personality cover story">
+  </div>
+  <div class="wrap hero-inner">
+    <h1>The people the world can't stop searching for.</h1>
+    <p>Biography &amp; Networth brings together researched life stories, career milestones and net worth estimates for actors, athletes, musicians, entrepreneurs and creators alike.</p>
   </div>
 </header>
 
-<main class="wrap">
+<section class="strap wrap reveal">
+  <p>We follow public careers, not private lives — every profile is researched, sourced and updated as new milestones happen.</p>
+</section>
 
-  <section class="hero reveal">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <div class="kicker load-stagger ld-1">LIVE · UPDATED WEEKLY</div>
-        <h1 class="load-stagger ld-2">Every face you recognize has a story nobody's told yet.</h1>
-        <p class="load-stagger ld-3">The internet's growing archive of biography, age, career, and net worth — for every face the world can't stop talking about.</p>
-        <div class="hero-actions load-stagger ld-4">
-          <a href="biography.html" class="cta-btn">Explore Biography</a>
-        </div>
-        <div class="trust-bar load-stagger ld-5">
-          <span class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Public Records</span>
-          <span class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Verified Interviews</span>
-          <span class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Fact-Checked Weekly</span>
-        </div>
-      </div>
-      <div class="hero-visual load-stagger ld-3">
-        <div class="hero-photo-frame" id="heroPhotoFrame">
-          <img class="hero-photo" id="heroPhotoImg" alt="Featured profile" loading="eager" decoding="async">
-          <div class="photo-placeholder">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-7 8-7s8 3 8 7"/></svg>
-            <span>Photo — paste URL in config</span>
-          </div>
-          <div class="hero-photo-corner"></div>
-          <div class="hero-photo-overlay">
-            <span class="eyebrow">Featured This Week</span>
-            <span class="hero-photo-name">— add name —</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<div class="banner">
+  <img src="https://res.cloudinary.com/seuwtfrp/image/upload/v1790325428/biographyandnetworth_12.png" alt="">
+  <span>Careers change fast. We keep up.</span>
+</div>
 
-  <section class="reveal">
-    <div class="trust-strip">
-      <div class="trust-strip-item">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
-        <div><div class="ts-title">Multi-Source Verified</div><div class="ts-sub">Checked against 2+ independent sources</div></div>
-      </div>
-      <div class="trust-strip-item">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
-        <div><div class="ts-title">Updated Weekly</div><div class="ts-sub">Every profile reviewed on a schedule</div></div>
-      </div>
-      <div class="trust-strip-item">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-        <div><div class="ts-title">Public Records & Statements</div><div class="ts-sub">No anonymous tips, no rumor mills</div></div>
-      </div>
-      <div class="trust-strip-item">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20l-7-4V6l7-4 7 4v10l-7 4z"/><path d="M9 11l2 2 4-4"/></svg>
-        <div><div class="ts-title">Editorially Reviewed</div><div class="ts-sub">Written and checked before it's published</div></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="reveal">
-    <div class="section-head">
-      <h2>This Week's Most Searched</h2>
-      <span>LIVE RANKING</span>
-    </div>
-    <table class="data-table">
-      <thead>
-        <tr><th>Rank</th><th>Name</th><th>Field</th><th>Trend</th></tr>
-      </thead>
-      <tbody id="tableBody"></tbody>
-    </table>
-  </section>
-
-  <section class="reveal">
-    <div class="editorial-block">
-      <h2>Not just a name. A record worth trusting.</h2>
-      <p>Every profile here is built the way a serious publication builds a story — checked against multiple sources, written in plain language, and free of the noise that fills most celebrity pages online.</p>
-    </div>
-
-    <div class="section-head">
-      <h2>Trending Faces</h2>
-      <span>6 PROFILES</span>
-    </div>
-    <div class="tiles" id="tileGrid"></div>
-
-    <div style="text-align:center; margin-top:40px;">
-      <a href="biography.html" class="cta-btn">Explore Biography</a>
-    </div>
-
-    <div class="editorial-block below">
-      <h2>Built to be the reference, not another rumor.</h2>
-      <p>No clickbait, no recycled gossip — just the facts people actually come here to find. This is the archive we'd want to read ourselves, growing one face at a time.</p>
-    </div>
-  </section>
-
-  <div class="stats reveal">
-    <div class="stat"><div class="num">01</div><div class="label">CATEGORY · BIOGRAPHY</div></div>
-    <div class="stat"><div class="num">100%</div><div class="label">SOURCED & VERIFIED</div></div>
-    <div class="stat"><div class="num">∞</div><div class="label">FACES, ONE PLACE</div></div>
+<section class="section" id="profiles">
+  <div class="wrap">
+    <div class="reveal"><div class="label">Featured personalities</div><h2>Profiles readers keep coming back to</h2></div>
+    <div class="profile-grid" id="profileGrid"></div>
   </div>
+</section>
 
-</main>
+<section class="mid-cta">
+  <div class="wrap reveal">
+    <h2>Curious about someone specific?</h2>
+    <p>Search hundreds of in-depth profiles covering career history, achievements and net worth.</p>
+    <a class="btn solid" href="biography.html" target="_blank" rel="noopener">Explore all biographies</a>
+  </div>
+</section>
+
+<div class="banner">
+  <img src="https://res.cloudinary.com/seuwtfrp/image/upload/v1790325428/biographyandnetworth_13.png" alt="">
+  <span>What's being searched for this week.</span>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="reveal"><div class="label">Trending now</div><h2>The profiles everyone's searching for this week</h2></div>
+    <div class="trend-grid" id="trendGrid"></div>
+  </div>
+</section>
+
+<div class="banner">
+  <img src="https://res.cloudinary.com/seuwtfrp/image/upload/v1790325428/biographyandnetworth_14.png" alt="">
+  <span>Numbers, sourced and double-checked.</span>
+</div>
+
+<section class="stats-band">
+  <div class="wrap stats-inner">
+    <div><div class="stat-num" data-count="500">0</div><div class="stat-label">Biographies published</div></div>
+    <div><div class="stat-num" data-count="30">0</div><div class="stat-label">Industries covered</div></div>
+    <div><div class="stat-num" data-count="1000000">0</div><div class="stat-label">Readers every month</div></div>
+    <div><div class="stat-num" data-count="52">0</div><div class="stat-label">Updates every year</div></div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="why-top">
+    <img src="https://res.cloudinary.com/seuwtfrp/image/upload/v1790325428/biographyandnetworth_15.png" alt="">
+  </div>
+  <div class="wrap why-body" style="margin-top:56px">
+    <div class="reveal">
+      <div class="label">Why read with us</div>
+      <h2 style="margin-top:8px">Fact-first profiles, written for readers</h2>
+    </div>
+    <div class="mode-list reveal">
+      <div class="mode"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><div><h3>Verified research</h3><p>Every figure and milestone is checked against multiple public sources before it's published.</p></div></div>
+      <div class="mode"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg><div><h3>Neutral, no bias</h3><p>We cover public careers across every field, without favouring one industry, name or platform.</p></div></div>
+      <div class="mode"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M3 12a9 9 0 1 1 3 6.7M3 12v6h6"/></svg><div><h3>Always current</h3><p>Profiles are revisited as careers, achievements and net worth estimates change.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="banner">
+  <img src="https://res.cloudinary.com/seuwtfrp/image/upload/v1790325428/biographyandnetworth_16.png" alt="">
+  <span>Start with a story that interests you.</span>
+</div>
+
+<section class="final-cta reveal">
+  <div class="wrap">
+    <h2>Pick a story. Start reading.</h2>
+    <a class="btn solid" href="biography.html" target="_blank" rel="noopener">View all biographies</a>
+  </div>
+</section>
 
 <footer>
   <div class="wrap">
-    <div class="footer-top">
-      <div class="brand" style="font-size:17px;">Biography <em>&</em> NetWorth</div>
-      <div class="footer-nav">
-        <a href="index.html">Home</a>
-        <a href="biography.html">Biography</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+    <div class="foot-top">
+      <a class="logo" href="index.html" target="_blank" rel="noopener"><img src="https://res.cloudinary.com/seuwtfrp/image/upload/v1790229632/biography_and_net_worth.png" alt="Biography &amp; Networth"></a>
+      <div class="foot-links">
+        <a href="index.html" target="_blank" rel="noopener">Home</a>
+        <a href="biography.html" target="_blank" rel="noopener">Biography</a>
+        <a href="about.html" target="_blank" rel="noopener">About</a>
+        <a href="contact.html" target="_blank" rel="noopener">Contact</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <div>© <span id="year"></span> Biography & NetWorth. All profiles independently researched.</div>
-      <div>Hosted on GitHub Pages</div>
-    </div>
+    <div class="wrap foot-bottom"><span>© 2026 Biography &amp; Networth.</span><span>Real stories. Real numbers.</span></div>
   </div>
 </footer>
 
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+const profiles=[1,2,3,4,5,6].map(n=>`https://res.cloudinary.com/seuwtfrp/image/upload/v1790325428/biographyandnetworth_${n}.png`);
+const pg=document.getElementById('profileGrid');
+profiles.forEach(src=>{
+  const el=document.createElement('div');
+  el.className='profile-card reveal';
+  el.innerHTML=`<img src="${src}" alt="Featured personality" loading="lazy">`;
+  pg.appendChild(el);
+});
 
-  // ====================================================================
-  // IMAGE CONFIG — paste Pinterest / Dropbox (direct) image URLs here.
-  // Leave "" empty and that spot shows a neat placeholder instead of
-  // a broken image icon. Nothing else needs to change when you add URLs.
-  // ====================================================================
-  const HERO_PHOTO = ""; // featured profile photo (portrait, 4:5 works best)
-  const TILE_PHOTOS = ["", "", "", "", "", ""]; // 6 trending-face tile photos, same order as tiles below
+const trending=[7,8,9,10].map(n=>`https://res.cloudinary.com/seuwtfrp/image/upload/v1790325428/biographyandnetworth_${n}.png`);
+const tg=document.getElementById('trendGrid');
+trending.forEach(src=>{
+  const el=document.createElement('div');
+  el.className='trend-card reveal';
+  el.innerHTML=`<img src="${src}" alt="Trending personality" loading="lazy">`;
+  tg.appendChild(el);
+});
 
-  // Hero photo loader
-  (function loadHeroPhoto(){
-    if (!HERO_PHOTO) return;
-    const frame = document.getElementById('heroPhotoFrame');
-    const img = document.getElementById('heroPhotoImg');
-    img.addEventListener('load', () => frame.classList.add('has-photo'));
-    img.src = HERO_PHOTO;
-  })();
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40)},{passive:true});
 
-  // Ticker content
-  const tickerItems = ['MOST SEARCHED THIS WEEK', 'NEW PROFILES ADDED EVERY WEEK', 'INDEPENDENTLY RESEARCHED', 'AGE · CAREER · NET WORTH', 'ONE PLACE FOR EVERY FACE'];
-  const track = document.getElementById('tickerTrack');
-  track.innerHTML = (tickerItems.concat(tickerItems)).map(t => `<span>${t}</span>`).join('•');
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(e=>io.observe(e));
+setTimeout(()=>document.querySelectorAll('.profile-card, .trend-card').forEach(e=>io.observe(e)),0);
 
-  // Data table rows (placeholder — replace with real names later)
-  const rows = [
-    {rank:'01', field:'Actor', trend:'▲ 18%'},
-    {rank:'02', field:'Athlete', trend:'▲ 12%'},
-    {rank:'03', field:'Musician', trend:'▲ 9%'},
-    {rank:'04', field:'Influencer', trend:'▲ 7%'},
-    {rank:'05', field:'Entrepreneur', trend:'▲ 4%'},
-  ];
-  document.getElementById('tableBody').innerHTML = rows.map(r => `
-    <tr>
-      <td class="rank">${r.rank}</td>
-      <td class="row-name">— add name —</td>
-      <td><span class="field-tag">${r.field}</span></td>
-      <td class="trend-up">${r.trend}</td>
-    </tr>
-  `).join('');
-
-  // Tile grid — all point to the single biography category page
-  const tileCount = 6;
-  const grid = document.getElementById('tileGrid');
-  const placeholderSvg = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-7 8-7s8 3 8 7"/></svg>`;
-  grid.innerHTML = Array.from({length: tileCount}).map((_, i) => `
-    <a class="tile" href="biography.html">
-      ${TILE_PHOTOS[i]
-        ? `<img class="tile-photo" src="${TILE_PHOTOS[i]}" alt="" loading="lazy" decoding="async">`
-        : `<div class="tile-placeholder">${placeholderSvg}<span>Add photo</span></div>`}
-      <div class="tile-label">
-        <div>
-          <span class="eyebrow">Trending</span>
-          <div class="tile-name">— add name —</div>
-        </div>
-        <span class="cta">Read <span class="arrow">→</span></span>
-      </div>
-    </a>
-  `).join('');
-
-  // Tilt effect on tiles
-  document.querySelectorAll('.tile').forEach(tile => {
-    tile.addEventListener('mousemove', e => {
-      const r = tile.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width - 0.5;
-      const y = (e.clientY - r.top) / r.height - 0.5;
-      tile.style.transform = `perspective(600px) rotateX(${-y*6}deg) rotateY(${x*6}deg) scale(1.015)`;
-    });
-    tile.addEventListener('mouseleave', () => { tile.style.transform = ''; });
+const counters=document.querySelectorAll('.stat-num');
+const cio=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const el=e.target, target=+el.dataset.count, dur=1400, start=performance.now();
+    function tick(now){
+      const p=Math.min((now-start)/dur,1);
+      el.textContent=Math.floor(target*(1-Math.pow(1-p,3))).toLocaleString();
+      if(p<1)requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+    cio.unobserve(el);
   });
-
-  // Cursor glow (desktop only)
-  const glow = document.getElementById('cursorGlow');
-  if (window.matchMedia('(pointer: fine)').matches) {
-    document.addEventListener('mousemove', e => {
-      glow.style.left = e.clientX + 'px';
-      glow.style.top = e.clientY + 'px';
-      glow.style.opacity = '1';
-    });
-    document.addEventListener('mouseleave', () => { glow.style.opacity = '0'; });
-  }
-
-  // Loading polish — staggered fade-in once fonts/layout settle
-  window.addEventListener('load', () => {
-    requestAnimationFrame(() => document.body.classList.add('ready'));
-  });
-  // Fallback in case 'load' is delayed by slow external assets
-  setTimeout(() => document.body.classList.add('ready'), 1200);
-
-  // Scroll reveal
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
-  }, {threshold:0.15});
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+},{threshold:.5});
+counters.forEach(c=>cio.observe(c));
 </script>
-
 </body>
 </html>
